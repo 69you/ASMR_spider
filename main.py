@@ -21,8 +21,8 @@ class ASMR:
         req = self.requests.post(
             url='https://api.asmr.one/api/auth/me',
             json={
-                "name": 'yuusukealmal',
-                "password": '1011loli'
+                "name": self.name,
+                "password": self.password
             },
             headers={
                 "Referer": 'https://www.asmr.one/',
