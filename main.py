@@ -7,8 +7,6 @@ from typing import Any, Dict
 
 class ASMR:
     def __init__(self) -> None:
-        self.name = os.getenv('name')
-        self.password = os.getenv('password')
         self.requests = requests
         self.name = []
         self.track = []
@@ -21,8 +19,8 @@ class ASMR:
         req = self.requests.post(
             url='https://api.asmr.one/api/auth/me',
             json={
-                "name": self.name,
-                "password": self.password
+                "name": os.getenv('name'),
+                "password": os.getenv('password')
             },
             headers={
                 "Referer": 'https://www.asmr.one/',
