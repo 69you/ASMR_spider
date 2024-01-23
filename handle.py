@@ -28,12 +28,13 @@ class download:
 
     def search(self, data, current_path):
         for item in data:
-            if item["type"] == "folder":
-                folder_path = os.path.join(current_path, item["title"])
-                os.makedirs(folder_path, exist_ok=True)
-                self.search(item["children"], folder_path)
-            elif item["type"] == "image" or item["type"] == "audio" or item["type"] == "text":
-                self.download_file(item["mediaDownloadUrl"], current_path, item["title"])
+            if "type" in item:
+                if item["type"] == "folder":
+                    folder_path = os.path.join(current_path, item["title"])
+                    os.makedirs(folder_path, exist_ok=True)
+                    self.search(item["children"], folder_path)
+                else:
+                    self.download_file(item.get("mediaDownloadUrl"), current_path, item.get("title"))
 
     def download_file(self, url, folder: str, file: str):
         response = requests.get(
