@@ -6,7 +6,7 @@ def check():
     config = configparser.ConfigParser()
     config.read('./config.ini')
 
-    if not config.has_section('account') or (not config.has_option('account', 'name') and config.has_option('account', 'password')):
+    if not config.has_section('account') or not (config.has_option('account', 'name') and config.has_option('account', 'password')):
         print("Account information error, please input your account information again")
 
         name = input('Please input your name: ')
@@ -24,12 +24,14 @@ def check():
         else:
             check()
     else:
-        if auth(config['account']['name'], config['account']['password']) == False:
-            config.remove_option('account', 'name')
-            config.remove_option('account', 'password')
-            with open("./config.ini", 'w') as f:
-                config.write(f)
-            check()
+        if config.has_option('account', 'name') and config.has_option('account', 'password'):
+            if auth(config['account']['name'], config['account']['password']) == False:
+                config.remove_option('account', 'name')
+                config.remove_option('account', 'password')
+                with open("./config.ini", 'w') as f:
+                    config.write(f)
+                check()
+
 
 def auth(name, password) -> bool:
     req = requests.post(
