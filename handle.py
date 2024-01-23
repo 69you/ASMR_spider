@@ -51,7 +51,7 @@ class download:
             'unit_divisor': 1024,
             'miniters': 1
         }
-        print(f"Downloading {file}")
+        print(r"Downloading {}/{}".format(folder.split("\\")[-1], file))
         progress = tqdm(total=size, **config)
         start = time.time()
 
