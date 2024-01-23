@@ -7,9 +7,6 @@ Python script to download ASMR audios from [asmr.one](https://asmr.one/).
 
 ## Usage
 1. Clone the repository by `git clone https://github.com/69you/ASMR_spider.git` or download the zip file directly.
-<br>
-2. Install the requirements `pip install -r requirements.txt`:
-<br>
-3. Type in your account and password in [asmr.one](https://asmr.one/) in `config.ini` :
-<br>
-4. Run `python main.py` to start the program : 
+2. Install the requirements `pip install -r requirements.txt`.
+3. Type in your account and password in [asmr.one](https://asmr.one/) in `config.ini`.
+4. Run `python main.py` to start the program.
